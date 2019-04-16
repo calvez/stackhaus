@@ -1,0 +1,14 @@
+# Query settings
+query GET_SETTINGS {
+    generalSettings {
+        dateFormat
+        description
+        email
+        language
+        startOfWeek
+        timeFormat
+        timezone
+        title
+        url
+    }
+}

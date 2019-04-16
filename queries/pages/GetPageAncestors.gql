@@ -1,0 +1,15 @@
+query GET_PAGE_ANCESTORS {
+    pages {
+        edges {
+            node {
+                id
+                title
+                slug
+                date
+                ancestors {
+                    __typename
+                }
+            }
+        }
+    }
+}

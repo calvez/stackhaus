@@ -1,0 +1,22 @@
+query GET_POST_BY($slug: String, $postId: Int) {
+    postBy(slug: $slug, postId: $postId) {
+        slug
+        title
+        content
+        id
+        postId
+        date
+        uri
+        featuredImage {
+            id
+            sourceUrl
+        }
+        categories {
+            edges {
+                node {
+                    id
+                }
+            }
+        }
+    }
+}

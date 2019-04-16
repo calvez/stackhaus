@@ -1,0 +1,30 @@
+# Query posts
+query GET_POSTS($first: Int) {
+    posts(first: $first) {
+        pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
+        }
+        edges {
+            node {
+                id
+                title
+                date
+                slug
+                featuredImage {
+                    id
+                    sourceUrl
+                }
+                categories {
+                    edges {
+                        node {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

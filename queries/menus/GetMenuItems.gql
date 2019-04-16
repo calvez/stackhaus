@@ -1,0 +1,13 @@
+query GET_MENU($location: MenuLocationEnum) {
+    menuItems(where: { location: $location }) {
+        all: nodes {
+            title
+            url
+            label
+            cssClasses
+            target
+            linkRelationship
+            description
+        }
+    }
+}

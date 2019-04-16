@@ -74,7 +74,8 @@ export default {
         clientConfigs: {
             default: {
                 // required
-                httpEndpoint: 'http://stackhaus-backend.local/graphql',
+                httpEndpoint:
+                    'http://stackhaus-backend.flywheelsites.com/graphql',
                 // httpEndpoint: process.env.WP_ENDPOINT,
                 // httpEndpoint: 'http://localhost:3001',
                 // optional

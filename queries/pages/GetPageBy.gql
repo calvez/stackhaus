@@ -1,0 +1,16 @@
+query GET_PAGE_BY($uri: String) {
+    pageBy(uri: $uri) {
+        slug
+        title
+        id
+        pageId
+        date
+        uri
+        content
+        featuredImage {
+            id
+            sourceUrl
+            caption
+        }
+    }
+}

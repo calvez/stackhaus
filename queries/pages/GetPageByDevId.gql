@@ -1,19 +1,19 @@
-# Query page by dev id meta field
 query GET_PAGE_BY_DEV_ID($devId: String) {
     pages(
         where: {
             metaQuery: {
                 metaArray: [
-                    {
-                        key: "custom_developer_id"
-                        value: $devId
-                        compare: EQUAL_TO
-                    }
+                    { key: "developer_id", value: $devId, compare: EQUAL_TO }
                 ]
             }
         }
         first: 1
     ) {
+        pageInfo {
+            hasPreviousPage
+            hasNextPage
+            endCursor
+        }
         edges {
             node {
                 id
@@ -22,6 +22,17 @@ query GET_PAGE_BY_DEV_ID($devId: String) {
                 content
                 date
                 slug
+                uri
+                childPages {
+                    nodes {
+                        id
+                        title
+                        slug
+                    }
+                }
+                ancestors {
+                    __typename
+                }
             }
         }
     }

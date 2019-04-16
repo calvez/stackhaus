@@ -3,6 +3,10 @@
     <div :class="classes">
         <!-- Header goes here -->
         <site-hamburger />
+        <!-- <site-menu :menu-data="menu" /> -->
+
+        <!-- <site-stored-menu /> -->
+        <wp-menu name="mainMenu" />
 
         <nuxt />
         <!-- Footer goes here -->
@@ -12,6 +16,9 @@
 <script>
 import _throttle from 'lodash/throttle'
 import _kebabCase from 'lodash/kebabCase'
+
+import menuQuery from '~/queries/menus/GetMenu.gql'
+import { formatMenuData } from '~/utils/formatters.js'
 
 export default {
     data() {
@@ -68,7 +75,21 @@ export default {
 
             this.$emit('throttled.scroll')
         }
+    },
+    apollo: {
+        menu: {
+            query: menuQuery,
+            variables() {
+                return {
+                    location: this.mainMenu
+                }
+            },
+            update(queryData) {
+                return formatMenuData(queryData)
+            }
+        }
     }
+    // TODO: Try moving menu here, see if its rendered SSR
 }
 </script>
 

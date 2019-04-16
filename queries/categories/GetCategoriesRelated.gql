@@ -1,0 +1,23 @@
+query GET_CATEGORIES_AND_RELATED {
+    categories {
+        edges {
+            node {
+                id
+                categoryId
+                name
+                posts {
+                    nodes {
+                        id
+                        title
+                        date
+                        featuredImage {
+                            id
+                            sourceUrl
+                            #winHeight
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

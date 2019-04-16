@@ -1,0 +1,28 @@
+query GET_MENU($location: MenuLocationEnum) {
+    menuItems(where: { location: $location }) {
+        edges {
+            node {
+                ...menuFields
+                childItems {
+                    edges {
+                        node {
+                            ...menuFields
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+fragment menuFields on MenuItem {
+    title
+    url
+    menuItemId
+    target
+    id
+    label
+    linkRelationship
+    description
+    cssClasses
+}
