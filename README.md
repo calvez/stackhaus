@@ -55,3 +55,7 @@ TODO GQL queries we need:
 -   Anytime we need a featured image we need (src-set, caption, height, width, video-url, title)
 -   Get page ancestors pages (to build breadcrumbs)
 -   Get next/prev post or page (for pagination)
+
+TODO:
+document how to register menus (both wp and nuxt)
+document how to register Plugins

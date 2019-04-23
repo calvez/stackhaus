@@ -1,6 +1,8 @@
 // GQL
-import mainMenu from '~/queries/menus/GetMenu.gql'
+import getMenu from '~/queries/menus/GetMenu.gql'
 import { formatMainMenuData } from '~/utils/formatters.js'
+// NOTE: Tests js fragments
+// import { getMenuTest } from '~/queries/menus/GetMenuFragment.js'
 
 // State
 export const state = () => ({})
@@ -17,18 +19,23 @@ export const actions = {
         console.log('server init')
         const client = app.apolloProvider.defaultClient
 
+        // TODO: set menu locations:
+        // let location = ['headerMenu', 'footerMenu']
+
         let menuData = await client
             .query({
-                query: mainMenu,
+                query: getMenu,
                 variables: {
-                    location: 'MAIN_MENU'
+                    // TODO: get location from plugin?
+                    location: 'HEADER_MENU' //header-menu
                 }
             })
             .then(({ data }) => {
+                // console.log('data', data)
                 return formatMainMenuData(data)
             })
 
-        context.commit('menus/MAIN_MENU', menuData)
+        context.commit('menus/HEADER_MENU', menuData)
     }
 }
 

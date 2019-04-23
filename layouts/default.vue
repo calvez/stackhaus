@@ -3,10 +3,8 @@
     <div :class="classes">
         <!-- Header goes here -->
         <site-hamburger />
-        <!-- <site-menu :menu-data="menu" /> -->
 
-        <!-- <site-stored-menu /> -->
-        <wp-menu name="mainMenu" />
+        <wp-menu location-name="header-menu" />
 
         <nuxt />
         <!-- Footer goes here -->
@@ -17,7 +15,8 @@
 import _throttle from 'lodash/throttle'
 import _kebabCase from 'lodash/kebabCase'
 
-import menuQuery from '~/queries/menus/GetMenu.gql'
+// import menuQuery from '~/queries/menus/GetMenu.gql'
+import { GET_MENU_ITEMS } from '~/queries/menus.js'
 import { formatMenuData } from '~/utils/formatters.js'
 
 export default {
@@ -78,7 +77,7 @@ export default {
     },
     apollo: {
         menu: {
-            query: menuQuery,
+            query: GET_MENU_ITEMS,
             variables() {
                 return {
                     location: this.mainMenu
@@ -89,7 +88,6 @@ export default {
             }
         }
     }
-    // TODO: Try moving menu here, see if its rendered SSR
 }
 </script>
 

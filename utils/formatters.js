@@ -11,20 +11,18 @@ export const formatMenuData = queryData => {
 }
 export const formatMainMenuData = queryData => {
     // TODO: Get children
-    let filtered = []
     let response = _get(queryData, 'menuItems.edges', false)
-    for (let i of response) {
-        filtered.push(i.node)
-    }
-    return filtered
-}
 
+    return response.map(i => {
+        return i.node
+    })
+}
 // Page
 export const formatPageData = queryData => {
-    return queryData // return _get(queryData, 'pages.edges[0].node', false)
+    return _get(queryData, 'pages', false)
 }
 export const formatPageByData = queryData => {
-    return queryData // return _get(queryData, 'pages.edges[0].node', false)
+    return _get(queryData, 'pageBy', false)
 }
 // Post
 export const formatPostsData = queryData => {

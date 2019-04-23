@@ -23,17 +23,39 @@ query GET_PAGE_BY_DEV_ID($devId: String) {
                 date
                 slug
                 uri
+                featuredImage {
+                    ...featuredAttachment
+                }
                 childPages {
                     nodes {
                         id
                         title
                         slug
+                        featuredImage {
+                            ...featuredAttachment
+                        }
                     }
                 }
                 ancestors {
                     __typename
                 }
             }
+        }
+    }
+}
+
+fragment featuredAttachment on MediaItem {
+    id
+    sourceUrl
+    caption
+    mediaDetails {
+        file
+        height
+        width
+        meta {
+            caption
+            credit
+            title
         }
     }
 }

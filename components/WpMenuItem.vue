@@ -1,28 +1,29 @@
 <template>
     <li :class="classes">
         <slot>
-            <router-link
-                v-if="forceRouterLink"
-                :to="(item.url || item.permalink) | removeTrailingSlash"
+            <!--  TODO: add filter to removeOrigin?-->
+            <nuxt-link
+                v-if="!isExternalLink"
+                @click.native="menuInteraction"
+                :class="itemClasses"
+                :to="relativePath | removeTrailingSlash"
                 v-html="item.label"
-            />
-
-            <router-link
-                v-else-if="!item.is_external"
-                :to="item.url | removeTrailingSlash"
-                v-html="item.label"
+                :target="item.target"
             />
 
             <a
                 v-else
-                :href="item.url | removeTrailingSlash"
+                :class="itemClasses"
+                @click.native="menuInteraction"
+                :href="relativePath | removeTrailingSlash"
                 target="_blank"
                 v-html="item.label"
             />
 
-            <ul v-if="children.length">
-                <menu-item
+            <ul class="children" v-if="children.length">
+                <wp-menu-item
                     v-for="(child, i) in children"
+                    :class="itemClasses"
                     :item="child"
                     :key="i"
                     :forceRouterLink="forceRouterLink"
@@ -34,7 +35,8 @@
 
 <script>
 import _get from 'lodash/get'
-
+import _pick from 'lodash/pick'
+const backendURL = 'http://stackhaus-backend.flywheelsites.com'
 // TODO: replace backend url, filter relative path
 export default {
     name: 'menu-item',
@@ -56,54 +58,69 @@ export default {
         }
     },
     computed: {
-        // TODO: get children
+        isExternalLink() {
+            return this.item.url.includes(backendURL) ? false : true
+        },
+        relativePath() {
+            // TODO: better way to filter url
+            /* Remove backend url*/
+            return this.item.url.split(backendURL).pop()
+        },
         children() {
-            return this.item.childItems || []
+            let kids = _get(this.item.childItems, 'edges', [])
+
+            return kids.map(i => {
+                return i.node
+            })
         },
         isActive() {
-            return this.$route.path.replace(/\/*$/, '') == this.item.url
+            return (
+                this.$nuxt.$route.path.replace(/\/*$/, '') == this.relativePath
+            )
         },
         isParent() {
             // remove trailing slash
-            const strippedSlash = this.$route.path.replace(/\/$/g, '')
+            const strippedSlash = this.$nuxt.$route.path.replace(/\/$/g, '')
             // remove last directory from current route
             const parentRoute = strippedSlash.replace(/\/[^\/]*$/g, '')
             return parentRoute == this.item.url
         },
         isAncestor() {
             return (
-                (!this.isActive && this.$route.path.includes(this.item.url)) ||
+                (!this.isActive &&
+                    this.$nuxt.$route.path.includes(this.item.url)) ||
                 this.isParent ||
                 this.item.url == '/'
             )
         },
         hasSubMenu() {
             // return Object.keys(this.item.children).length > 0
-            return this.item.childItems.edges.length > 0
+            // return this.item.childItems.edges.length > 0
+
+            let kids = _get(this.item.childItems, 'edges', false)
+            return kids.length ? true : false
         },
         isFrontPage() {
-            return this.item.url == '/'
+            // return this.item.url == '/'
+            return this.relativePath == '/'
         },
         classes() {
-            const classes = [
+            return [
                 'menu-item',
                 `menu-item-${this.item.menuItemId || 'none'}`,
-                { 'menu-item-has-children': this.hasSubMenu },
-                { 'current-menu-item': this.isActive },
-                { 'current-menu-parent': this.isParent },
-                { 'current-menu-ancestor': this.isAncestor },
-                { 'menu-item-is-front-page': this.isFrontPage },
-                { 'in-active-tree': this.isAncestor },
-                { active: this.isActive },
-                { 'menu-item-is-home': this.item.isHome }
+                { 'menu-item-has-children': this.hasSubMenu }
             ]
-
-            // if devId has been provided, add it
-            if (this.item.devId !== undefined) {
-                classes.push(`menu-item-dev-id-${this.item.devId}`)
-            }
-
-            return classes
+        },
+        itemClasses() {
+            return [
+                { 'current-menu-ancestor': this.isAncestor },
+                { 'menu-item-is-front-page': this.isFrontPage }
+            ]
+        }
+    },
+    methods: {
+        menuInteraction() {
+            this.$emit('menu-interaction')
         }
     }
 }

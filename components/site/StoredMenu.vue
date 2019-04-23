@@ -1,4 +1,5 @@
 <template>
+    <!-- NOTE: Test to ssr menu from store -->
     <ul class="menu">
         <li v-for="(item, i) in loadMenu">
             <a

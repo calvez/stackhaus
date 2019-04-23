@@ -33,12 +33,15 @@ export default {
     /*
      ** Global CSS
      */
-    css: ['~/styles/base.scss'],
+    css: ['~/styles/base.scss', '~/assets/transition.scss'],
 
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: ['~/plugins/global-component-loader.js'],
+    plugins: [
+        '~/plugins/global-component-loader.js',
+        '~/plugins/menu-loader.js'
+    ],
 
     /*
      ** Nuxt.js modules
@@ -46,15 +49,18 @@ export default {
     modules: ['@nuxtjs/apollo'],
 
     // Example to override router functionality
-    // router: {
-    //     extendRoutes (routes, resolve) {
-    //     routes.push({
-    //       name: '404',
-    //       path: '*',
-    //       component: resolve(__dirname, 'pages/404.vue')
-    //     })
-    //   }
-    // },
+    /*
+    router: {
+        middleware: ['mw1'], // Add middleware to all pages
+        extendRoutes (routes, resolve) {
+        routes.push({
+          name: '404',
+          path: '*',
+          component: resolve(__dirname, 'pages/404.vue')
+        })
+      }
+    },
+    */
 
     // Give apollo module options
     apollo: {
@@ -86,7 +92,7 @@ export default {
                 // LocalStorage token
                 tokenName: 'apollo-token', // optional
                 // Enable Automatic Query persisting with Apollo Engine
-                persisting: true, // Optional
+                persisting: false, // Optional
                 // Use websockets for everything (no HTTP)
                 // You need to pass a `wsEndpoint` for this to work
                 websocketsOnly: false // Optional

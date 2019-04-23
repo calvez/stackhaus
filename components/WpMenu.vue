@@ -13,6 +13,7 @@
 
 <script>
 import _kebabCase from 'lodash/kebabCase'
+import _camelCase from 'lodash/camelCase'
 import _get from 'lodash/get'
 import _find from 'lodash/find'
 
@@ -23,7 +24,7 @@ export default {
             default: ''
         },
         // TODO: rename menus not as camel case
-        name: {
+        locationName: {
             type: String,
             default: 'Main Menu'
         },
@@ -38,40 +39,57 @@ export default {
     },
     computed: {
         targetSlug() {
-            return this.slug || _kebabCase(this.name)
+            return this.slug || _kebabCase(this.locationName)
+        },
+        formattedName() {
+            return _camelCase(this.locationName)
         },
         menuItems() {
             const menus = _get(this.$store.state, 'menus', [])
-            console.log('menus', menus)
+            // console.log('menus', menus)
 
-            // find first menu that matches the given slug
             /*/
+            // find first menu that matches the given slug
             let menu = menus.find(singleMenu => {
-                return singleMenu.slug == this.targetSlug
+                return singleMenu.slug == this.tar
+                getSlug
             })
             /*/
-            // TODO: match by slug or name? (cant get slug from wpGraphql)
-            let menu = menus[this.name]
+            // TODO: match menu by slug or name? (cant get slug from wpGraphql)
+            let menu = menus[this.formattedName]
 
             // fall back to first menu
             if (menu === undefined) {
                 menu = _get(menus, '[0]')
             }
 
-            console.log('menu', menu)
-
             // return menu ? menu.items : false
-
             return menu
         }
     }
 }
 </script>
 
-<style>
+<style lang="scss">
 .menu {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    padding: 10px;
+
+    .menu-item {
+        // display: inline;
+        // text-align: right;
+        list-style-type: none;
+        text-transform: uppercase;
+        font-size: 16px;
+
+        .children {
+            // display: inline;
+            // text-align: right;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+    }
 }
 </style>
