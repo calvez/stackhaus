@@ -2,7 +2,6 @@ import pkg from './package'
 import gql from 'graphql-tag'
 const { ApolloClient } = require('apollo-boost') // Is this necessary?
 import { GET_ALL_PAGES } from '~/queries/pages.js'
-
 require('dotenv').config()
 
 export default {
@@ -45,6 +44,7 @@ export default {
     plugins: [
         '~/plugins/global-component-loader.js',
         '~/plugins/menu-loader.js'
+        //{ src: '~/plugins/web-font-loader.js', ssr: false }
     ],
 
     /*

@@ -21,11 +21,19 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
+## Fonts
+
+This theme uses [webfontloader](https://github.com/typekit/webfontloader) for font loading.
+
+If you are using a `@font-face` font, then you will need to put the font files in `/static/fonts`, then define the CSS in `/styles/fonts.css`, the names of the font families in `/web-font-loader.js`, and uncomment the `fonts.css` CSS line and the `web-font-loader.js` plugin line in the `nuxt.config.js` file.
+
+For Typekit or google fonts, please see the [webfontloader](https://github.com/typekit/webfontloader) documentation.
+
 ## TODO list
 
 TODO Boilerplate improvements:
 
--   Get web font loader working: https://github.com/typekit/webfontloader#custom
+-   Install eslint and es-lint vue plugin, config like MPC
 -   For GA tracking, query WP-GQL for token and set it on client before mounted. See: https://stackoverflow.com/questions/54013335/nuxt-js-how-to-include-an-asynchronous-script-in-the-nuxt-config-js-file
 -   Src-set on attachments
 -   Meta on posts/pages/attachments/menu items
@@ -35,9 +43,14 @@ TODO Boilerplate improvements:
 -   Get a meta field added to admin dashboard for Frontend URL. Needs both staging and production.
 -   Get it working on Heroku
 -   Add CI pipeline (TBD what we are testing for)
+-   Wire up UPDATE_REFERRAL_ROUTE into router. Maybe this helps: https://github.com/funkhaus/vuehaus/blob/9adbf3cdcde3426455848fcce19f8f5d1d2c18c0/src/utils/router.js#L51-L77
+-   Commit isScrolled to store
+-   Get SCSS functions for type settings working: https://github.com/funkhaus/stackhaus/issues/1
+-   Setup Router scroll-behavior: https://router.vuejs.org/guide/advanced/scroll-behavior.html#async-scrolling
 
 TODO Components we need:
 
+-   SVG inline images!
 -   Wp-content
 -   Wp-menu
 -   Responsive-Image (better version, should play videos too)

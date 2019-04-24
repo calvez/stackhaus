@@ -1,6 +1,6 @@
 <!-- This will be our App.vue -->
 <template>
-    <div :class="classes">
+    <main :class="classes">
         <!-- Header goes here -->
         <site-header />
 
@@ -10,8 +10,9 @@
 
         <nuxt />
         <!-- Footer goes here -->
+
         <wp-menu location-name="footer-menu" />
-    </div>
+    </main>
 </template>
 
 <script>
@@ -38,17 +39,21 @@ export default {
         classes() {
             return [
                 'container',
+<<<<<<< HEAD
                 'default-layout',
+=======
+                'main',
+>>>>>>> 713be786bca6a3735fe529d8d9a0a9346b9820e6
                 `breakpoint-${this.breakpoint}`,
                 `route-${_kebabCase(this.$route.name)}`,
                 { scrolled: this.sTop > 0 },
-                { 'menu-opened': this.$store.state.site.menuOpened }
+                { 'menu-opened': this.$store.state.menuOpened }
             ]
         },
         breakpoint() {
             let breakpoint = this.winWidth >= 750 ? 'desktop' : 'mobile'
             if (this.$store.state.breakpoint != breakpoint) {
-                this.$store.commit('site/SET_BREAKPOINT', breakpoint)
+                this.$store.commit('SET_BREAKPOINT', breakpoint)
             }
             return breakpoint
         }

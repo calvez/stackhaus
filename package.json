@@ -1,11 +1,11 @@
 {
-    "name": "funkhaus-nuxt-test",
+    "name": "stackhaus",
     "version": "1.0.0",
     "backendURL": "http://stackhaus-backend.flywheelsites.com/graphql",
     "engines": {
         "node": "10.13.0"
     },
-    "description": "Testing new tech stack",
+    "description": "A Vue/Nuxt frontned boiler plate optimzed to work with the Stackhaus-Backend WordPress theme.",
     "author": "Funkhaus",
     "private": true,
     "scripts": {
@@ -17,8 +17,6 @@
     },
     "dependencies": {
         "@nuxtjs/apollo": "^4.0.0-rc4",
-        "apollo-boost": "^0.3.1",
-        "apollo-client": "^2.5.1",
         "cross-env": "^5.2.0",
         "dotenv": "^7.0.0",
         "fitvids": "^2.0.0",
@@ -27,7 +25,7 @@
         "imagesloaded": "^4.1.4",
         "lodash": "^4.17.11",
         "node-fetch": "^2.3.0",
-        "nuxt": "^2.4.0",
+        "nuxt": "^2.6.2",
         "vue-apollo": "^3.0.0-beta.28"
     },
     "devDependencies": {

@@ -1,7 +1,7 @@
 <template>
-    <div class="loading-message" v-if="$apollo.loading">
+    <section class="loading-message" v-if="$apollo.loading">
         Loading...
-    </div>
+    </section>
 
     <section v-else :class="classes">
         <div class="page-content">
@@ -200,7 +200,7 @@ export default {
 <style lang="scss">
 @import '~/styles/_vars.scss';
 
-.section {
+.main {
     color: $black;
 
     .menu {
