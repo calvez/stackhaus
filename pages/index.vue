@@ -43,7 +43,7 @@ export default {
 <style lang="scss">
 @import '~/styles/_vars.scss';
 
-.main {
+.section {
     color: $black;
     margin: 0 auto;
     min-height: 100vh;
