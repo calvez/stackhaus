@@ -25,16 +25,7 @@ import { GET_MENU_ITEMS } from '~/queries/menus.js'
 import { GET_PAGE_BY_DEV_ID } from '~/queries/pages.js'
 
 // Formatters
-import {
-    formatMenuData,
-    formatSettingsData,
-    formatPageData,
-    formatPageByData,
-    formatPostsData,
-    formatPostByData,
-    formatPostCategoriesData,
-    formatPostCategoriesRelatedData
-} from '~/utils/formatters.js'
+import { formatPageData, formatPageByData } from '~/utils/formatters.js'
 
 export default {
     data() {
