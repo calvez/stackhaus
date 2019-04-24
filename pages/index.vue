@@ -6,12 +6,6 @@
     <section v-else :class="classes">
         <div class="page-content">
             <h2>{{ pageObject.title }} By (devId: {{ devId }} )</h2>
-
-            <responsive-image
-                :object="featuredImage"
-                aspect="56.25"
-                object-fit="cover"
-            />
         </div>
     </section>
 </template>
@@ -44,8 +38,8 @@ export default {
             return ['section', this.devId]
         },
         pageObject() {
+            //
             let page = _get(this.page, 'edges', {})
-            // TODO: clean up
             return page.map(i => {
                 return i.node
             })[0]

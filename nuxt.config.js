@@ -1,6 +1,4 @@
 import pkg from './package'
-import gql from 'graphql-tag'
-require('dotenv').config()
 
 export default {
     mode: 'universal',
@@ -50,19 +48,16 @@ export default {
      */
     modules: ['@nuxtjs/apollo'],
 
-    // Example to override router functionality
-    /*
+    // Override router functionality
     router: {
-        middleware: ['mw1'], // Add middleware to all pages
-        extendRoutes (routes, resolve) {
-        routes.push({
-          name: '404',
-          path: '*',
-          component: resolve(__dirname, 'pages/404.vue')
-        })
-      }
+        middleware: ['error-checking'] // Adds middleware to all pages
+        // extendRoutes (routes, resolve) {
+        // routes.push({
+        //   name: '404',
+        //   path: '*',
+        //   component: resolve(__dirname, 'pages/404.vue')
+        // })
     },
-    */
 
     // Give apollo module options
     apollo: {
@@ -92,7 +87,7 @@ export default {
                 //   credentials: 'same-origin'
                 // },
                 // LocalStorage token
-                tokenName: 'apollo-token', // optional
+                // tokenName: 'apollo-token', // optional
                 // Enable Automatic Query persisting with Apollo Engine
                 persisting: false, // Optional
                 // Use websockets for everything (no HTTP)
@@ -115,11 +110,10 @@ export default {
     /*
      ** Generate Static Routes
      */
-    // TODO: generate static routes:
-    // https://github.com/nuxt-community/apollo-module/issues/69
+    // TODO: generate static routes maybe, to get SSG working?:
+    // See: https://github.com/nuxt-community/apollo-module/issues/69
     generate: {
         routes: function() {
-            // const client = app.apolloProvider.defaultClient
             // TODO: Create the apollo client
             /*
             const apolloClient = new ApolloClient({
