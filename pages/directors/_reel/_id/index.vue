@@ -3,7 +3,7 @@
         Loading...
     </div>
 
-    <section v-else :class="classes">
+    <section v-else>
         this is a reel detail page
     </section>
 </template>

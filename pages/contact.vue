@@ -22,7 +22,7 @@ export default {
             devId: 'contact'
         }
     },
-    middleware: ['mw1'],
+    middleware: ['error-checking'],
     computed: {
         classes() {
             return ['section', this.devId]
