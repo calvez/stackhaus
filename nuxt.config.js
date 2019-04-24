@@ -1,7 +1,5 @@
 import pkg from './package'
 import gql from 'graphql-tag'
-const { ApolloClient } = require('apollo-boost') // Is this necessary?
-import { GET_ALL_PAGES } from '~/queries/pages.js'
 require('dotenv').config()
 
 export default {

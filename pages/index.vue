@@ -13,7 +13,7 @@
                 object-fit="cover"
             />
 
-            <!--  a-div: -->
+            <!--  a-div examples: -->
             <!-- <a-div href="/work">Link to work page relative</a-div>
             <a-div href="http://localhost:3000/work">Link to work page</a-div>
             <a-div href="http://google.com">Link to google</a-div> -->

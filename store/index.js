@@ -1,8 +1,6 @@
 // GQL
 import { GET_MENU } from '~/queries/menus.js'
 import { formatMainMenuData } from '~/utils/formatters.js'
-// NOTE: Tests js fragments
-// import { getMenuTest } from '~/queries/menus/GetMenuFragment.js'
 
 // State
 export const state = () => ({})
@@ -17,7 +15,6 @@ export const mutations = {}
 export const actions = {
     async nuxtServerInit(context, { req, app }) {
         const client = app.apolloProvider.defaultClient
-        // console.log('server init', app.apolloProvider)
 
         // TODO: set menu locations:
         // let location = ['headerMenu', 'footerMenu']

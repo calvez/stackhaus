@@ -5,11 +5,6 @@
     <div v-else>
         <h2>This is director {{ page.title }}'s detail page</h2>
 
-        <!-- <responsive-image
-            :object="page.featuredImage"
-            aspect="56.25"
-            object-fit="cover"
-        /> -->
         <nuxt-child />
     </div>
 </template>

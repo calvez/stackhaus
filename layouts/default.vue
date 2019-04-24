@@ -3,14 +3,10 @@
     <main :class="classes">
         <!-- Header goes here -->
         <site-header />
-
-        <!--  TODO: rename menu location-->
-        <!-- <wp-menu location-name="header-menu" /> -->
         <!-- Hamburger goes here -->
 
         <nuxt />
         <!-- Footer goes here -->
-
         <wp-menu location-name="footer-menu" />
     </main>
 </template>
@@ -39,11 +35,8 @@ export default {
         classes() {
             return [
                 'container',
-<<<<<<< HEAD
                 'default-layout',
-=======
                 'main',
->>>>>>> 713be786bca6a3735fe529d8d9a0a9346b9820e6
                 `breakpoint-${this.breakpoint}`,
                 `route-${_kebabCase(this.$route.name)}`,
                 { scrolled: this.sTop > 0 },
@@ -53,7 +46,7 @@ export default {
         breakpoint() {
             let breakpoint = this.winWidth >= 750 ? 'desktop' : 'mobile'
             if (this.$store.state.breakpoint != breakpoint) {
-                this.$store.commit('SET_BREAKPOINT', breakpoint)
+                this.$store.commit('site/SET_BREAKPOINT', breakpoint)
             }
             return breakpoint
         }

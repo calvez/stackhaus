@@ -3,7 +3,7 @@
         <nuxt-link to="/">
             <svg-image src="logo.svg" />
         </nuxt-link>
-        <wp-menu location-name="social-menu" />
+        <wp-menu location-name="header-menu" />
     </div>
 </template>
 
