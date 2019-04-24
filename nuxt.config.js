@@ -1,4 +1,6 @@
 import pkg from './package'
+import gql from 'graphql-tag'
+require('dotenv').config()
 
 export default {
     mode: 'universal',
@@ -32,16 +34,14 @@ export default {
     /*
      ** Global CSS
      */
-    css: [
-        '~/styles/base.scss'
-        //'~/styles/fonts.css'
-    ],
+    css: ['~/styles/base.scss', '~/assets/transition.scss'],
 
     /*
      ** Plugins to load before mounting the App
      */
     plugins: [
-        { src: '~/plugins/global-component-loader.js' }
+        '~/plugins/global-component-loader.js',
+        '~/plugins/menu-loader.js'
         //{ src: '~/plugins/web-font-loader.js', ssr: false }
     ],
 
@@ -51,15 +51,18 @@ export default {
     modules: ['@nuxtjs/apollo'],
 
     // Example to override router functionality
-    // router: {
-    //     extendRoutes (routes, resolve) {
-    //     routes.push({
-    //       name: '404',
-    //       path: '*',
-    //       component: resolve(__dirname, 'pages/404.vue')
-    //     })
-    //   }
-    // },
+    /*
+    router: {
+        middleware: ['mw1'], // Add middleware to all pages
+        extendRoutes (routes, resolve) {
+        routes.push({
+          name: '404',
+          path: '*',
+          component: resolve(__dirname, 'pages/404.vue')
+        })
+      }
+    },
+    */
 
     // Give apollo module options
     apollo: {
@@ -79,7 +82,8 @@ export default {
         clientConfigs: {
             default: {
                 // required
-                httpEndpoint: 'http://stackhaus-backend.local/graphql',
+                httpEndpoint:
+                    'http://stackhaus-backend.flywheelsites.com/graphql',
                 // httpEndpoint: process.env.WP_ENDPOINT,
                 // httpEndpoint: 'http://localhost:3001',
                 // optional
@@ -90,7 +94,7 @@ export default {
                 // LocalStorage token
                 tokenName: 'apollo-token', // optional
                 // Enable Automatic Query persisting with Apollo Engine
-                persisting: true, // Optional
+                persisting: false, // Optional
                 // Use websockets for everything (no HTTP)
                 // You need to pass a `wsEndpoint` for this to work
                 websocketsOnly: false // Optional
@@ -106,5 +110,39 @@ export default {
          ** You can extend webpack config here
          */
         extend(config, ctx) {}
+    },
+
+    /*
+     ** Generate Static Routes
+     */
+    // TODO: generate static routes:
+    // https://github.com/nuxt-community/apollo-module/issues/69
+    generate: {
+        routes: function() {
+            // const client = app.apolloProvider.defaultClient
+            // TODO: Create the apollo client
+            /*
+            const apolloClient = new ApolloClient({
+                // You should use an absolute URL here
+                uri: 'http://stackhaus-backend.flywheelsites.com/graphql'
+            })
+            let routes = apolloClient
+                .query({ GET_ALL_PAGES })
+                .then(({ result }) => {
+                    // console.log('data', data)
+                    const { data } = result
+                    console.log('data ', data)
+                    // TODO: do work here, example:
+                    // const dynamicRoutes = data.allBlogPosts.map(post => `/post/${post.slug}`)
+                    // return staticRoutes.concat(dynamicRoutes)
+
+                })
+                .catch(error => {
+                    console.log('error generating routes:')
+                    console.log(error)
+                })
+            console.log('routes ', routes)
+            */
+        }
     }
 }

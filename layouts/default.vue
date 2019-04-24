@@ -2,16 +2,21 @@
 <template>
     <main :class="classes">
         <!-- Header goes here -->
-        <site-hamburger />
+        <site-header />
+        <!-- Hamburger goes here -->
 
         <nuxt />
         <!-- Footer goes here -->
+        <wp-menu location-name="footer-menu" />
     </main>
 </template>
 
 <script>
 import _throttle from 'lodash/throttle'
 import _kebabCase from 'lodash/kebabCase'
+
+import { GET_MENU_ITEMS } from '~/queries/menus.js'
+import { formatMenuData } from '~/utils/formatters.js'
 
 export default {
     data() {
@@ -30,6 +35,7 @@ export default {
         classes() {
             return [
                 'container',
+                'default-layout',
                 'main',
                 `breakpoint-${this.breakpoint}`,
                 `route-${_kebabCase(this.$route.name)}`,
@@ -40,7 +46,7 @@ export default {
         breakpoint() {
             let breakpoint = this.winWidth >= 750 ? 'desktop' : 'mobile'
             if (this.$store.state.breakpoint != breakpoint) {
-                this.$store.commit('SET_BREAKPOINT', breakpoint)
+                this.$store.commit('site/SET_BREAKPOINT', breakpoint)
             }
             return breakpoint
         }
@@ -69,8 +75,35 @@ export default {
 
             this.$emit('throttled.scroll')
         }
+    },
+    apollo: {
+        menu: {
+            query: GET_MENU_ITEMS,
+            variables() {
+                return {
+                    location: this.mainMenu
+                }
+            },
+            update(queryData) {
+                return formatMenuData(queryData)
+            }
+        }
     }
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.default-layout {
+    .footer-menu {
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        .menu-item {
+            display: inline;
+            text-transform: capitalize;
+            padding: 10px 20px;
+        }
+    }
+}
+</style>

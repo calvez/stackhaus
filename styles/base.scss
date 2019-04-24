@@ -64,6 +64,27 @@ button {
     z-index: 500;
 }
 
+// Layouts
+.site-header {
+    padding: 50px 45px 0px;
+    .svg-wrapper {
+        width: 100px;
+        height: auto;
+    }
+
+    .social-menu {
+        padding: 0;
+        display: inline;
+        float: right;
+        clear: left;
+        .menu-item {
+            display: inline;
+            text-transform: capitalize;
+            padding: 0 15px;
+        }
+    }
+}
+
 // Animations
 // .bounce {
 //     animation: bounce 1.5s ease-in-out infinite;

@@ -1,6 +1,7 @@
 {
     "name": "stackhaus",
     "version": "1.0.0",
+    "backendURL": "http://stackhaus-backend.flywheelsites.com/graphql",
     "engines": {
         "node": "10.13.0"
     },
@@ -17,7 +18,9 @@
     "dependencies": {
         "@nuxtjs/apollo": "^4.0.0-rc4",
         "cross-env": "^5.2.0",
+        "dotenv": "^7.0.0",
         "graphql": "^14.2.1",
+        "graphql-tag": "^2.10.1",
         "lodash": "^4.17.11",
         "node-fetch": "^2.3.0",
         "nuxt": "^2.6.2",
