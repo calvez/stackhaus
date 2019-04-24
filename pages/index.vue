@@ -12,45 +12,7 @@
                 aspect="56.25"
                 object-fit="cover"
             />
-
-            <!--  a-div examples: -->
-            <!-- <a-div href="/work">Link to work page relative</a-div>
-            <a-div href="http://localhost:3000/work">Link to work page</a-div>
-            <a-div href="http://google.com">Link to google</a-div> -->
-
-            <!-- <no-ssr>
-                <wp-content-test :raw-html="pageObject.content" />
-            </no-ssr> -->
         </div>
-
-        <!-- <div class="settings">
-            {{ settings }}
-        </div> -->
-
-        <!-- <div class="posts">
-            <h2>All Posts</h2>
-            {{ posts }}
-        </div>
-
-        <div class="page-by">
-            <h2>Page By (uri: {{ pageByUri }})</h2>
-            {{ pageBy }}
-        </div>
-
-        <div class="postsBy">
-            <h2>Post By (slug: {{ postSlug }})</h2>
-            {{ postBy }}
-        </div>
-
-        <div class="categories">
-            <h2>Post Categories</h2>
-            {{ categories }}
-        </div>
-
-        <div class="categories">
-            <h2>Post Categories and Related Posts:</h2>
-            {{ categoriesRelated }}
-        </div> -->
     </section>
 </template>
 
@@ -117,82 +79,6 @@ export default {
                 return formatPageData(queryData)
             }
         }
-        /*
-        menu: {
-            query: menuQuery,
-            variables() {
-                return {
-                    location: this.mainMenu
-                }
-            },
-            update(queryData) {
-                return formatMenuData(queryData)
-            }
-        },
-
-        settings: {
-            query: settingsQuery,
-            update(queryData) {
-                return formatSettingsData(queryData)
-            }
-        }
-
-        pageBy: {
-            query: pageBy,
-            variables() {
-                return {
-                    uri: this.pageByUri
-                }
-            },
-            update(queryData) {
-                return formatPageByData(queryData)
-            }
-        },
-        posts: {
-            query: postsQuery,
-            variables() {
-                return {
-                    first: this.firstPosts
-                }
-            },
-            update(queryData) {
-                return formatPostsData(queryData)
-            }
-        },
-        postBy: {
-            query: postByQuery,
-            variables() {
-                return {
-                    slug: this.postSlug
-                }
-            },
-            update(queryData) {
-                return formatPostByData(queryData)
-            }
-        },
-        categories: {
-            query: postCategoriesQuery,
-            variables() {
-                return {
-                    // slug: this.postSlug
-                }
-            },
-            update(queryData) {
-                return formatPostCategoriesData(queryData)
-            }
-        },
-        categoriesRelated: {
-            query: postCategoriesRelatedQuery,
-            variables() {
-                return {
-                    // slug: this.postSlug
-                }
-            },
-            update(queryData) {
-                return formatPostCategoriesRelatedData(queryData)
-            }
-        }
-        */
     }
 }
 </script>
@@ -200,7 +86,7 @@ export default {
 <style lang="scss">
 @import '~/styles/_vars.scss';
 
-.main {
+.section {
     color: $black;
 
     .menu {

@@ -15,8 +15,6 @@
 
 <script>
 // Page
-// import pageByQuery from '~/queries/pages/GetPageBy.gql'
-
 import { GET_PAGE_BY } from '~/queries/pages.js'
 import _get from 'lodash/get'
 import _pick from 'lodash/pick'
