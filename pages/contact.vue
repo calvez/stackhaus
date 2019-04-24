@@ -1,7 +1,5 @@
 <template>
-    <div class="loading-message" v-if="$apollo.loading">
-        Loading...
-    </div>
+    <div class="loading-message" v-if="$apollo.loading" v-html="loading" />
 
     <section v-else :class="classes">
         <div class="content" v-html="pageContent" />
@@ -22,7 +20,7 @@ export default {
             devId: 'contact'
         }
     },
-    middleware: ['error-checking'],
+    middleware: ['error-check'],
     computed: {
         classes() {
             return ['section', this.devId]
@@ -41,7 +39,6 @@ export default {
                 }
             },
             update(queryData) {
-                console.log('queryData', queryData)
                 return formatPageData(queryData)
             }
         }

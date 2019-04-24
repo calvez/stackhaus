@@ -1,7 +1,6 @@
 <template>
-    <div class="director-detail" v-if="$apollo.loading">
-        loading...
-    </div>
+    <div class="loading-message" v-if="$apollo.loading" v-html="loading" />
+
     <div v-else>
         <h2>This is director {{ page.title }}'s detail page</h2>
 
@@ -27,6 +26,7 @@ export default {
             uri: this.$nuxt.$route.path
         }
     },
+    //  /* SET HEADER  */
     // head() {
     //     return {
     //         title: this.page.title

@@ -1,11 +1,13 @@
 <template>
-    <section class="loading-message" v-if="$apollo.loading">
-        Loading...
-    </section>
+    <section
+        class="loading-message"
+        v-if="$apollo.loading"
+        v-html="Loading..."
+    />
 
     <section v-else :class="classes">
         <div class="page-content">
-            <h2>{{ pageObject.title }} By (devId: {{ devId }} )</h2>
+            <h2>{{ pageObject.title }}</h2>
         </div>
     </section>
 </template>
@@ -24,13 +26,7 @@ import { formatPageData, formatPageByData } from '~/utils/formatters.js'
 export default {
     data() {
         return {
-            // page: {},
-            mainMenu: 'HEADER_MENU',
-            firstPosts: 2,
-            postSlug: 'slug-test',
-            devId: 'front-page',
-            pageBySlug: 'work',
-            pageByUri: 'work'
+            devId: 'front-page'
         }
     },
     computed: {
@@ -72,35 +68,5 @@ export default {
 @import '~/styles/_vars.scss';
 
 .section {
-    color: $black;
-
-    .menu {
-        display: block;
-    }
-    .page-content {
-        display: block;
-        .page-content {
-            display: block;
-            .image {
-                max-width: 250px;
-                height: auto;
-            }
-        }
-    }
-    // TODO: Remove placeholder
-    .responsive-image {
-        max-width: 500px;
-        height: auto;
-        margin: 0 auto;
-    }
-
-    .a-div {
-        display: block;
-        text-decoration: underline;
-        transition: all 0.2s;
-        &:hover {
-            color: red;
-        }
-    }
 }
 </style>

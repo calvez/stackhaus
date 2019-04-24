@@ -31,32 +31,6 @@ export const actions = {
                 return formatMainMenuData(data)
             })
         context.commit('menus/HEADER_MENU', headerMenuData)
-
-        let footerMenuData = await client
-            .query({
-                query: GET_MENU,
-                variables: {
-                    location: 'FOOTER_MENU'
-                }
-            })
-            .then(({ data }) => {
-                // console.log('data', data)
-                return formatMainMenuData(data)
-            })
-        context.commit('menus/FOOTER_MENU', footerMenuData)
-
-        let socialMenu = await client
-            .query({
-                query: GET_MENU,
-                variables: {
-                    location: 'SOCIAL_MENU'
-                }
-            })
-            .then(({ data }) => {
-                // console.log('data', data)
-                return formatMainMenuData(data)
-            })
-        context.commit('menus/SOCIAL_MENU', socialMenu)
     }
 }
 

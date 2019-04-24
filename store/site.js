@@ -1,5 +1,5 @@
 export const state = () => ({
-    // TODO: add this from nuxt config
+    // TODO: add this from nuxt config?
     backendURL: 'http://stackhaus-backend.flywheelsites.com/graphql',
     windowLocation: 'http://localhost:3000/',
     menuOpened: false,

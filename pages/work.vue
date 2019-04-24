@@ -1,7 +1,5 @@
 <template>
-    <div class="loading-message" v-if="$apollo.loading">
-        Loading...
-    </div>
+    <div class="loading-message" v-if="$apollo.loading" v-html="loading" />
 
     <section v-else :class="classes">
         this is work in /pages
@@ -12,12 +10,15 @@
 <script>
 import _get from 'lodash/get'
 
-// Menu
-import { GET_MENU_ITEMS } from '~/queries/menus.js'
 // Page
 import { GET_PAGE_BY_DEV_ID } from '~/queries/pages.js'
 
 export default {
+    data() {
+        return {
+            devId: 'work'
+        }
+    },
     computed: {
         classes() {
             return ['section', this.devId]

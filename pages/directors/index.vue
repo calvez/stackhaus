@@ -41,7 +41,7 @@ export default {
             .then(({ data }) => {
                 return formatPageData(data)
             })
-        /*  // Commit to store 
+        /*  // Commit to store
             context.store.commit('page/PAGE_DATA', pageData)
          */
     },

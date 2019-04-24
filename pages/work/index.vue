@@ -1,15 +1,8 @@
 <template>
-    <section>
-        <div class="loading-message" v-if="$apollo.loading">
-            Loading...
-        </div>
+    <div class="loading-message" v-if="$apollo.loading" v-html="loading" />
 
-        <section v-else :class="classes">
-            <div class="page-content">
-                <h2>work: {{ page.title }} By uri: {{ uri }}</h2>
-                <img class="image" :src="featuredImage.sourceUrl" alt="" />
-            </div>
-        </section>
+    <section v-else :class="classes">
+        <h2>{{ page.title }}</h2>
     </section>
 </template>
 
@@ -17,7 +10,6 @@
 // Page
 import { GET_PAGE_BY } from '~/queries/pages.js'
 import _get from 'lodash/get'
-import _pick from 'lodash/pick'
 // Formatters
 import { formatPageData, formatPageByData } from '~/utils/formatters.js'
 
