@@ -13,15 +13,14 @@
                 object-fit="cover"
             />
 
-            <a-div href="/work">Link to work page relative</a-div>
+            <!--  a-div: -->
+            <!-- <a-div href="/work">Link to work page relative</a-div>
             <a-div href="http://localhost:3000/work">Link to work page</a-div>
-            <a-div href="http://google.com">Link to google</a-div>
+            <a-div href="http://google.com">Link to google</a-div> -->
 
-            <no-ssr>
+            <!-- <no-ssr>
                 <wp-content-test :raw-html="pageObject.content" />
-            </no-ssr>
-
-            <!-- <NuxtChild :key="pageObject.id" /> -->
+            </no-ssr> -->
         </div>
 
         <!-- <div class="settings">
@@ -62,22 +61,6 @@ import _get from 'lodash/get'
 import { GET_MENU_ITEMS } from '~/queries/menus.js'
 // Page
 import { GET_PAGE_BY_DEV_ID } from '~/queries/pages.js'
-
-/*
-//OLD PAGE QUERIES
-// Menu
-import menuQuery from '~/queries/menus/GetMenuItems.gql'
-// Settings
-import settingsQuery from '~/queries/settings/GetSettings.gql'
-// Page
-import pageByDevId from '~/queries/pages/GetPageByDevId.gql'
-import pageBy from '~/queries/pages/GetPageBy.gql'
-// Post
-import postsQuery from '~/queries/posts/GetPosts.gql'
-import postByQuery from '~/queries/posts/GetPostBy.gql'
-import postCategoriesQuery from '~/queries/categories/GetCategories.gql'
-import postCategoriesRelatedQuery from '~/queries/categories/GetCategoriesRelated.gql'
-*/
 
 // Formatters
 import {

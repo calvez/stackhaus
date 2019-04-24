@@ -6,7 +6,7 @@
         "node": "10.13.0"
     },
     "description": "Testing new tech stack",
-    "author": "Luke Waldner",
+    "author": "Funkhaus",
     "private": true,
     "scripts": {
         "dev": "nuxt",
@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "@nuxtjs/apollo": "^4.0.0-rc4",
+        "apollo-boost": "^0.3.1",
+        "apollo-client": "^2.5.1",
         "cross-env": "^5.2.0",
         "dotenv": "^7.0.0",
         "fitvids": "^2.0.0",

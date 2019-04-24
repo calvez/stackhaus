@@ -32,11 +32,11 @@ export default {
             uri: this.$nuxt.$route.path
         }
     },
-    head() {
-        return {
-            title: this.page.title
-        }
-    },
+    // head() {
+    //     return {
+    //         title: this.page.title
+    //     }
+    // },
     apollo: {
         page: {
             query: GET_PAGE_BY,

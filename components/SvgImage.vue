@@ -1,7 +1,7 @@
 <template>
-    <div :class="['svg-wrapper', { loading }]">
-        <img :src="src" alt="" />
-    </div>
+    <!-- <div :class="['svg-wrapper', { loading }]"> -->
+    <!-- </div> -->
+    <img :class="['svg-wrapper', { loading }]" :src="src" alt="" />
 </template>
 
 <script>

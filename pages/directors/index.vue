@@ -1,5 +1,7 @@
 <template>
-    <div class="director-list">
+    <div class="loading-message" v-if="$apollo.loading" v-html="loading" />
+
+    <div v-else class="director-list">
         This is the /pages/directors page
 
         <ul v-for="(page, i) in childrenPages">
@@ -26,10 +28,10 @@ export default {
             page: {}
         }
     },
-    // NOTE: Fetch method example
-    fetch(context) {
+    // NOTE: Async Fetch method example
+    async fetch(context) {
         const client = context.app.apolloProvider.defaultClient
-        let pageData = client
+        let pageData = await client
             .query({
                 query: GET_PAGE_BY_DEV_ID,
                 variables: {
@@ -39,8 +41,9 @@ export default {
             .then(({ data }) => {
                 return formatPageData(data)
             })
-        // TODO: how to resolve pageData promise and then commit?
-        /* context.store.commit('page/PAGE_DATA', pageData) */
+        /*  // Commit to store 
+            context.store.commit('page/PAGE_DATA', pageData)
+         */
     },
     apollo: {
         page: {

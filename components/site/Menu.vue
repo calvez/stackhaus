@@ -1,4 +1,5 @@
 <template>
+    <!-- TODO: DELETE -->
     <ul class="menu">
         <h2>Main Menu</h2>
         <li v-for="(item, i) in menuData">

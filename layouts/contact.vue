@@ -2,8 +2,9 @@
 <template>
     <div :class="classes">
         <!-- Header goes here -->
+        <site-header />
 
-        <p>this is a custom contact layout</p>
+        <p>this is the custom Contact layout</p>
 
         <nuxt />
         <!-- Footer goes here -->
@@ -20,7 +21,7 @@ export default {
     },
     computed: {
         classes() {
-            return ['container']
+            return ['container', 'contact-layout']
         }
     }
 }

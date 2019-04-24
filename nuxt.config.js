@@ -1,4 +1,8 @@
 import pkg from './package'
+import gql from 'graphql-tag'
+const { ApolloClient } = require('apollo-boost') // Is this necessary?
+import { GET_ALL_PAGES } from '~/queries/pages.js'
+
 require('dotenv').config()
 
 export default {
@@ -108,5 +112,39 @@ export default {
          ** You can extend webpack config here
          */
         extend(config, ctx) {}
+    },
+
+    /*
+     ** Generate Static Routes
+     */
+    // TODO: generate static routes:
+    // https://github.com/nuxt-community/apollo-module/issues/69
+    generate: {
+        routes: function() {
+            // const client = app.apolloProvider.defaultClient
+            // TODO: Create the apollo client
+            /*
+            const apolloClient = new ApolloClient({
+                // You should use an absolute URL here
+                uri: 'http://stackhaus-backend.flywheelsites.com/graphql'
+            })
+            let routes = apolloClient
+                .query({ GET_ALL_PAGES })
+                .then(({ result }) => {
+                    // console.log('data', data)
+                    const { data } = result
+                    console.log('data ', data)
+                    // TODO: do work here, example:
+                    // const dynamicRoutes = data.allBlogPosts.map(post => `/post/${post.slug}`)
+                    // return staticRoutes.concat(dynamicRoutes)
+
+                })
+                .catch(error => {
+                    console.log('error generating routes:')
+                    console.log(error)
+                })
+            console.log('routes ', routes)
+            */
+        }
     }
 }

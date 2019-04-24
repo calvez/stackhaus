@@ -2,12 +2,15 @@
 <template>
     <div :class="classes">
         <!-- Header goes here -->
-        <site-hamburger />
+        <site-header />
 
-        <wp-menu location-name="header-menu" />
+        <!--  TODO: rename menu location-->
+        <!-- <wp-menu location-name="header-menu" /> -->
+        <!-- Hamburger goes here -->
 
         <nuxt />
         <!-- Footer goes here -->
+        <wp-menu location-name="footer-menu" />
     </div>
 </template>
 
@@ -15,7 +18,6 @@
 import _throttle from 'lodash/throttle'
 import _kebabCase from 'lodash/kebabCase'
 
-// import menuQuery from '~/queries/menus/GetMenu.gql'
 import { GET_MENU_ITEMS } from '~/queries/menus.js'
 import { formatMenuData } from '~/utils/formatters.js'
 
@@ -36,6 +38,7 @@ export default {
         classes() {
             return [
                 'container',
+                'default-layout',
                 `breakpoint-${this.breakpoint}`,
                 `route-${_kebabCase(this.$route.name)}`,
                 { scrolled: this.sTop > 0 },
@@ -91,4 +94,18 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.default-layout {
+    .footer-menu {
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        .menu-item {
+            display: inline;
+            text-transform: capitalize;
+            padding: 10px 20px;
+        }
+    }
+}
+</style>

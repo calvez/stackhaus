@@ -1,6 +1,16 @@
 <template>
-    <div class="director-reel">
-        This is the /directors Reel detail
+    <div class="loading-message" v-if="$apollo.loading" v-html="loading" />
+    <div v-else class="director-reel">
+        This is the /directors Reel index
+
+        <ul v-for="(child, i) in childrenPages">
+            <li :key="i">
+                <nuxt-link
+                    :to="`${$route.path}/${child.slug}`"
+                    v-html="child.title"
+                />
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -25,13 +35,13 @@ export default {
                 }
             },
             update(queryData) {
-                return formatPageData(queryData)
+                return formatPageByData(queryData)
             }
         }
     },
     computed: {
         childrenPages() {
-            return _get(this.page, 'edges[0].node.childPages.nodes', [])
+            return _get(this.page, 'childPages.nodes', [])
         }
     }
 }

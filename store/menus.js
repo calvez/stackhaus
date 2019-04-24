@@ -3,7 +3,8 @@
 
 export const state = () => ({
     headerMenu: {},
-    socialMenu: {}
+    socialMenu: {},
+    footerMenu: {}
 })
 
 export const mutations = {
@@ -12,5 +13,8 @@ export const mutations = {
     },
     SOCIAL_MENU(state, data) {
         state.socialMenu = data
+    },
+    FOOTER_MENU(state, data) {
+        state.footerMenu = data
     }
 }

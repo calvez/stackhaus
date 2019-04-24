@@ -1,5 +1,5 @@
 // GQL
-import getMenu from '~/queries/menus/GetMenu.gql'
+import { GET_MENU } from '~/queries/menus.js'
 import { formatMainMenuData } from '~/utils/formatters.js'
 // NOTE: Tests js fragments
 // import { getMenuTest } from '~/queries/menus/GetMenuFragment.js'
@@ -16,15 +16,14 @@ export const mutations = {}
 // Actions
 export const actions = {
     async nuxtServerInit(context, { req, app }) {
-        console.log('server init')
         const client = app.apolloProvider.defaultClient
+        // console.log('server init', app.apolloProvider)
 
         // TODO: set menu locations:
         // let location = ['headerMenu', 'footerMenu']
-
-        let menuData = await client
+        let headerMenuData = await client
             .query({
-                query: getMenu,
+                query: GET_MENU,
                 variables: {
                     // TODO: get location from plugin?
                     location: 'HEADER_MENU' //header-menu
@@ -34,8 +33,33 @@ export const actions = {
                 // console.log('data', data)
                 return formatMainMenuData(data)
             })
+        context.commit('menus/HEADER_MENU', headerMenuData)
 
-        context.commit('menus/HEADER_MENU', menuData)
+        let footerMenuData = await client
+            .query({
+                query: GET_MENU,
+                variables: {
+                    location: 'FOOTER_MENU'
+                }
+            })
+            .then(({ data }) => {
+                // console.log('data', data)
+                return formatMainMenuData(data)
+            })
+        context.commit('menus/FOOTER_MENU', footerMenuData)
+
+        let socialMenu = await client
+            .query({
+                query: GET_MENU,
+                variables: {
+                    location: 'SOCIAL_MENU'
+                }
+            })
+            .then(({ data }) => {
+                // console.log('data', data)
+                return formatMainMenuData(data)
+            })
+        context.commit('menus/SOCIAL_MENU', socialMenu)
     }
 }
 

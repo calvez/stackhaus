@@ -3,8 +3,8 @@
         <h1 v-if="error.statusCode === 404">Page not found</h1>
         <h1 v-else>{{ error.message }}</h1>
         <h1>{{ error.statusCode }}</h1>
-        <h1>{{ error.customProp }}</h1>
-        <nuxt-link to="/">Home page</nuxt-link>
+        <!-- <h1>{{ error.customProp }}</h1> -->
+        <nuxt-link to="/">Go to Home page</nuxt-link>
     </div>
 </template>
 

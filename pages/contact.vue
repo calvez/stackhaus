@@ -4,7 +4,7 @@
     </div>
 
     <section v-else :class="classes">
-        {{ page }}
+        <div class="content" v-html="pageContent" />
     </section>
 </template>
 
@@ -16,16 +16,19 @@ import { GET_PAGE_BY_DEV_ID } from '~/queries/pages.js'
 import { formatPageData } from '~/utils/formatters.js'
 
 export default {
+    layout: 'contact',
     data() {
         return {
             devId: 'contact'
         }
     },
-    layout: 'contact',
     middleware: ['mw1'],
     computed: {
         classes() {
             return ['section', this.devId]
+        },
+        pageContent() {
+            return _get(this.page, 'edges[0].node.content', '')
         }
     },
     methods: {},
@@ -38,6 +41,7 @@ export default {
                 }
             },
             update(queryData) {
+                console.log('queryData', queryData)
                 return formatPageData(queryData)
             }
         }

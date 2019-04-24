@@ -112,7 +112,7 @@ export const GET_PAGE_BY_DEV_ID = gql`
     }
 `
 
-export const GET_PAGE_CHILDREN = gql`
+export const GET_ALL_PAGES = gql`
     query {
         pages {
             edges {
