@@ -55,7 +55,7 @@ export default {
     apollo: {
         clientConfigs: {
             default: {
-                httpEndpoint: "http://stackhaus-backend.local/graphql",
+                httpEndpoint: "http://api.mabe.hu/graphql",
                 tokenName: "apollo-token",
                 persisting: false,
                 websocketsOnly: false
